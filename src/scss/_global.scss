@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+// sticky footer start
+.site {
+  display: flex;
+  min-height: 100vh;
+  
+}
+.site-content {
+  flex: 0;
+}
+// sticky footer end
+
+.footer {
+  margin-top: 40px;
+  z-index: 2;
+  justify-self: flex-end;;
+}
+.footer__copy {
+}

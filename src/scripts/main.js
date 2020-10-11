@@ -1,0 +1,45 @@
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  const year = document.querySelector('#year');
+  const days = document.querySelector('#days');
+  const hours = document.querySelector('#hours');
+  const minutes = document.querySelector('#minutes');
+  const seconds = document.querySelector('#seconds');
+  const countDown = document.querySelector('#countdown');
+  const preloader = document.querySelector('#preloader');
+
+
+  const curentYear = new Date().getFullYear();
+  const nextYear = new Date(`January 01 ${curentYear +1 } 00:00:00`);
+  year.innerText = curentYear +1;
+
+  function updateCounter (){
+    const currentTime = new Date();
+
+
+  const different = nextYear - currentTime;
+
+  const daysleft = Math.floor(different / 1000 / 60 / 60 / 24);
+  const hoursLeft = Math.floor(different / 1000 /60 /60 ) % 24;
+  const minutesLeft = Math.floor(different / 1000 /60) % 60;
+  const secondsLeft = Math.floor(different / 1000) % 60;
+
+  days.innerText = daysleft < 10 ? "0" + daysleft:daysleft;
+  hours.innerText = hoursLeft < 10 ? "0" + hoursLeft : hoursLeft;
+  minutes.innerText = minutesLeft< 10 ? "0" + minutesLeft : minutesLeft;
+  seconds.innerText = secondsLeft < 10 ? "0" + secondsLeft : secondsLeft;
+
+  }
+  updateCounter ();
+
+  setInterval (updateCounter, 1000);
+  
+  setTimeout (function (){
+    preloader.remove();
+    countDown.style.display = 'flex';
+  },1000);
+
+
+  
+});
